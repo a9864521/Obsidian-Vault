@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Desktop 教學</title>
+<style>
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        line-height: 1.5;
+        color: #212529;
+        margin: 0 auto;
+        padding: 20px;
+        width: 95%;
+        max-width: 1000px;
+    }
+
+    /* Tab styling */
+    .tab {
+        overflow: hidden;
+        border: 1px solid #dee2e6;
+        border-radius: 0.25rem;
+        background-color: #f8f9fa;
+        margin-bottom: 1rem;
+    }
+
+    .tab button {
+        background-color: transparent;
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 0.75rem 1rem;
+        transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+        font-weight: 500;
+        color: #495057;
+    }
+
+    .tab button:hover {
+        color: #007bff;
+        background-color: #e9ecef;
+    }
+
+    .tab button.active {
+        color: #007bff;
+        background-color: #fff;
+        border-bottom: 2px solid #007bff;
+    }
+
+    /* Content styling */
+    .tabcontent {
+        display: none;
+        padding: 1.25rem;
+        border: 1px solid #dee2e6;
+        border-radius: 0.25rem;
+        background-color: #fff;
+    }
+
+    .content-section {
+        margin: 1.5rem 0;
+    }
+
+    h2 {
+    color: #212529;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+    ul {
+        padding-left: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    li {
+        margin-bottom: 0.5rem;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        margin: 1rem 0;
+        border-radius: 0.25rem;
+        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    }
+</style>
+</head>
+<body>
+    <div class="tab">
+        <button class="tablinks" onclick="openStep(event, 'step1')" id="defaultOpen">Step 1: Add 專案</button>
+        <button class="tablinks" onclick="openStep(event, 'step2')">Step 2: Add 專案說明</button>
+        <button class="tablinks" onclick="openStep(event, 'step3')">Step 3: 提交變更</button>
+        <button class="tablinks" onclick="openStep(event, 'step4')">Step 4: 推送到 GitHub (1)</button>
+        <button class="tablinks" onclick="openStep(event, 'step5')">Step 5: 推送到 GitHub (2)</button>
+    </div>
+
+    <div id="step1" class="tabcontent">
+        <img src="img/Pasted image 20251104161916.png" alt="Add 專案">
+        <div class="content-section">
+            <h2>1. Clone repository...（複製專案）</h2>
+            <p><strong>用途</strong>：把「別人的」或「你在 GitHub 網站上的」專案下載到電腦</p>
+            
+            <h2>2. Create new repository...（建立新專案）⭐</h2>
+            <p><strong>用途</strong>：從零開始建立一個全新的專案</p>
+            
+            <h2>3. Add existing repository...（加入現有專案）</h2>
+            <p><strong>用途</strong>：把「電腦上已經存在的資料夾」加入 Git 管理</p>
+        </div>
+    </div>
+
+    <div id="step2" class="tabcontent">
+        <img src="img/Pasted image 20251104161438.png" alt="Add 專案說明">
+        <div class="content-section">
+            <h2>1. Name（專案名稱）⭐ 必填</h2>
+            <ul>
+                <li>輸入你的專案名稱</li>
+                <li>資料夾名稱會成為 GitHub 網址</li>
+            </ul>
+
+            <h2>2. Description（專案描述） 選填</h2>
+            <ul>
+                <li>簡單說明這個專案是什麼</li>
+            </ul>
+
+            <h2>3. Local path（本機路徑）⭐ 重要</h2>
+            <ul>
+                <li>專案要儲存在電腦的哪裡</li>
+            </ul>
+
+            <h2>4. Initialize this repository with a README</h2>
+            <ul>
+                <li>☑️ 建議勾選</li>
+                <li>會自動建立一個 README.md 檔案（專案說明文件）</li>
+                <li>方便之後寫專案介紹</li>
+            </ul>
+
+            <h2>5. Git ignore</h2>
+            <ul>
+                <li>告訴 Git 哪些檔案「不要」上傳到 GitHub</li>
+                <li>避免上傳不必要的大型檔案（如套件資料夾）</li>
+                <li>避免上傳敏感資訊（如密碼、API 金鑰）</li>
+            </ul>
+
+            <h2>6. License</h2>
+            <ul>
+                <li>告訴別人可以如何使用你的程式碼</li>
+                <li><strong>MIT License</strong>：最寬鬆，別人可以自由使用、修改、商用</li>
+                <li><strong>Apache License 2.0</strong>：類似 MIT，但有專利保護</li>
+                <li><strong>GNU GPL</strong>：別人修改後也必須開源</li>
+                <li><strong>None</strong>：如果是私人專案或不想讓人使用</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="step3" class="tabcontent">
+        <img src="img/Pasted image 20251104171130.png" alt="提交變更">
+        <div class="content-section">
+            <h2>提交變更</h2>
+            <ul>
+                <li><strong>Summary（必填）</strong>：簡短描述這次改了什麼（例如：「新增登入功能」）</li>
+                <li><strong>Description（選填）</strong>：詳細說明</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="step4" class="tabcontent">
+           <h2>推送選項</h2>
+        <img src="img/Pasted image 20251104171618.png" alt="推送到 GitHub 1">
+    
+        <div class="content-section">
+             <img src="img/Pasted image 20251104171705.png" alt="推送到 GitHub 2">
+            <ul>
+                <li><strong>Open in Visual Studio Code"</strong>（用 VSCode 開啟）
+                    <ul>
+                        <li>快速開啟這個專案資料夾到 VSCode</li>
+                        <li>方便你開始編輯檔案</li>
+                    </ul>
+                </li>
+                <li><strong>"Show in Explorer"</strong>（在檔案總管中顯示）
+                    <ul>
+                        <li>打開專案資料夾的位置</li>
+                        <li>如果你想改路徑，就點這個看資料夾在哪</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="step5" class="tabcontent">
+        <img src="img/Pasted image 20251104172154.png" alt="推送到 GitHub 3">
+        <div class="content-section">
+            <h2>設定選項</h2>
+            <ul>
+                <li><strong>Name</strong>（專案名稱）</li>
+                <li><strong>Description</strong>（專案描述）</li>
+                <li><strong>Keep this code private</strong>（保持程式碼私密）</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function openStep(evt, stepName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(stepName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+    </script>
+</body>
+</html>
